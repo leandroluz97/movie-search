@@ -1,14 +1,15 @@
 class Scroll {
-  constructor() {
-    this.carouselSearch = document.querySelector('#carouselSearch');
+  constructor(carousel) {
+    this.carousel = document.querySelector(`#${carousel}`); //carouselSearch
     this.scroollAmount = 0;
   }
 
   //Scroll left
-  sliderScrollLeft() {
-    let scrollPerClick = document.querySelector('.movie').clientWidth * 3;
+  sliderScrollLeft(classMovie) {
+    let scrollPerClick =
+      document.querySelector(`.${classMovie}`).clientWidth * 3;
 
-    this.carouselSearch.scrollTo({
+    this.carousel.scrollTo({
       top: 0,
       left: (this.scroollAmount -= scrollPerClick),
       behavior: 'smooth',
@@ -20,19 +21,20 @@ class Scroll {
   }
 
   //Scroll right
-  sliderScrollRight() {
-    let scrollPerClick = document.querySelector('.movie').clientWidth * 3;
+  sliderScrollRight(classMovie) {
+    let scrollPerClick =
+      document.querySelector(`.${classMovie}`).clientWidth * 3;
 
     if (
       this.scroollAmount <=
-      this.carouselSearch.scrollWidth - this.carouselSearch.clientWidth
+      this.carousel.scrollWidth - this.carousel.clientWidth
     ) {
       this.scroollAmount = this.scroollAmount + scrollPerClick;
     } else {
       this.scroollAmount = 0;
     }
 
-    this.carouselSearch.scrollTo({
+    this.carousel.scrollTo({
       top: 0,
       left: this.scroollAmount,
       behavior: 'smooth',

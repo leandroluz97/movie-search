@@ -61,6 +61,7 @@ body {
 .head__input::placeholder {
   opacity: 0.5;
   font-family: 'Roboto', sans-serif;
+  font-size: 0.8em;
 }
 
 .head__lupa {
@@ -69,6 +70,7 @@ body {
   font-size: 1.5em;
   bottom: 10%;
   left: 31%;
+  font-weight: 400;
 }
 .head__nav {
   display: flex;
@@ -125,6 +127,7 @@ body {
 .main__title {
   font-size: 2.5em;
   margin-bottom: 0.5em;
+  line-height: 1.2em;
 }
 .main__overview {
   text-align: justify;
@@ -140,7 +143,7 @@ body {
 .main_favorite {
   background-color: #dd0a0a;
   color: white;
-  border-radius: 5px;
+  border-radius: 2px;
   padding: 0.5em;
   border: none;
   font-weight: 700;
@@ -150,13 +153,14 @@ body {
   cursor: pointer;
   outline: none;
   transition: 0.1s ease;
+  margin-top: 1em;
 }
 .fa-star {
   font-size: 1.2em;
   padding-left: 0.5em;
 }
 .main_favorite:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 /*=========Carousel=============*/
@@ -220,6 +224,15 @@ body {
 }
 .switchLeft:hover {
   transform: translateX(-5px);
+}
+.popular__title,
+.search__title {
+  color: white;
+  max-width: 1200px;
+  margin: 2em auto 0 auto;
+}
+.search__title {
+  margin: 0 auto 0 auto;
 }
 .section__carousel {
   position: relative;
@@ -326,5 +339,11 @@ body {
   .main__content {
     width: 100%;
     padding: 3vh 0;
+  }
+  .main_favorite {
+    width: 100%;
+    justify-content: center;
+    margin: 1em 0;
+    font-size: 1.3em;
   }
 }

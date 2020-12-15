@@ -37,7 +37,7 @@
         </div>
 
         <ul class="head__nav">
-          <li class="head__item"><a href="#">POPULAR</a></li>
+          <li class="head__item"><a href="#popular">POPULAR</a></li>
           <li class="head__item"><a href="#">FAVORITE</a></li>
         </ul>
       </div>
@@ -47,9 +47,20 @@
       <div id="main" class="main"></div>
     </main>
 
-    <section class="section__carousel">
-      <div class="carouselBox" id="boxSearch"></div>
-      <div class="carousel" id="carouselSearch"></div>
+    <section id="search">
+      <h2 class="search__title">Search Results</h2>
+      <section class="section__carousel" id="searchCarousel">
+        <div class="carouselBox" id="boxSearch"></div>
+        <div class="carousel" id="carouselSearch"></div>
+      </section>
+    </section>
+
+    <section id="popular">
+      <h2 class="popular__title" id="popular">Popular Movies</h2>
+      <section class="section__carousel" id="popularCarousel">
+        <div class="carouselBox" id="boxPopular"></div>
+        <div class="carousel" id="carouselPopular"></div>
+      </section>
     </section>
 
     <script src="movie.js"></script>
