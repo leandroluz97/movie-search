@@ -11,30 +11,31 @@ const test = document.querySelector('#test');
 //Get popular Movie
 document.addEventListener('DOMContentLoaded', function () {
   movie.getMovies().then((data) => {
-    const ui = new UI('carouselPopular', 'boxPopular');
-    const scroll = new Scroll('carouselPopular');
-    //console.log(data.resPopular.results);
-    ui.allSearchMovie(data.resPopular, data.resGenres, 'polular');
+    let ui = new UI('carouselPopular', 'boxPopular');
 
-    //Arrow sliders
-    const left = document.querySelector('.switchLeft');
-    const right = document.querySelector('.switchRight');
+    ui.allSearchMovie(data.resPopular, data.resGenres, 'popular');
+    sliders('carouselPopular', 'popular');
+  });
+});
 
-    left.addEventListener('click', function () {
-      scroll.sliderScrollLeft('polular');
-    });
+//Get popular Movie
 
-    right.addEventListener('click', function () {
-      scroll.sliderScrollRight('polular');
-    });
+document.addEventListener('DOMContentLoaded', function () {
+  movie.getMovies().then((data) => {
+    ui = new UI('carouselTop', 'boxTop');
+
+    ui.allSearchMovie(data.resTopRated, data.resGenres, 'top');
+    sliders('carouselTop', 'top');
   });
 });
 
 //Search movie
 input.addEventListener('keyup', function () {
   const ui = new UI('carouselSearch', 'boxSearch');
-  const scroll = new Scroll('carouselSearch');
+
   if (input.value !== '') {
+    const search = document.querySelector('#search');
+    search.style.display = 'block';
     movie.getMovies(input.value).then(function (data) {
       if (!data.resSearchMovie.results) {
         ui.clearChosenOne();
@@ -43,17 +44,7 @@ input.addEventListener('keyup', function () {
       } else {
         ui.allSearchMovie(data.resSearchMovie, data.resGenres, 'movie');
 
-        //Arrow sliders
-        const left = document.querySelector('.switchLeft');
-        const right = document.querySelector('.switchRight');
-
-        left.addEventListener('click', function () {
-          scroll.sliderScrollLeft('movie');
-        });
-
-        right.addEventListener('click', function () {
-          scroll.sliderScrollRight('movie');
-        });
+        sliders('carouselSearch', 'movie');
       }
     });
   } else {
@@ -62,6 +53,22 @@ input.addEventListener('keyup', function () {
   }
 });
 
+//Arrow sliders
+function sliders(carousel, section) {
+  const scroll = new Scroll(carousel);
+
+  //Arrow sliders
+  const left = document.querySelector(`.switchLeft${section}`);
+  const right = document.querySelector(`.switchRight${section}`);
+
+  left.addEventListener('click', function () {
+    scroll.sliderScrollLeft(section);
+  });
+
+  right.addEventListener('click', function () {
+    scroll.sliderScrollRight(section);
+  });
+}
 /*
 
 //instanciate classes

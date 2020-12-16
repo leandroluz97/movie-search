@@ -15,8 +15,8 @@ class UI {
     this.clearSearchMovie();
 
     this.box.innerHTML += `
-    <i class="fas fa-chevron-right switchRight sliderButton"></i>
-    <i class="fas fa-chevron-left switchLeft sliderButton"></i>
+    <i class="fas fa-chevron-right switchRight${movieClass} sR sliderButton"></i>
+    <i class="fas fa-chevron-left switchLeft${movieClass} sL sliderButton"></i>
 `;
     movies.results.forEach((movie, index) => {
       this.carousel.innerHTML += ` <img src="http://image.tmdb.org/t/p/original/${movie.poster_path}" class="carousel-img ${movieClass}"/>`;

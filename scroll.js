@@ -6,6 +6,7 @@ class Scroll {
 
   //Scroll left
   sliderScrollLeft(classMovie) {
+    console.log(classMovie);
     let scrollPerClick =
       document.querySelector(`.${classMovie}`).clientWidth * 3;
 

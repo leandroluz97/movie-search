@@ -199,7 +199,7 @@ body {
   cursor: pointer;
 }
 
-.switchRight {
+.sR {
   right: 0;
   background: linear-gradient(
     90deg,
@@ -209,10 +209,10 @@ body {
   padding: 1em;
   transition: 0.5s ease;
 }
-.switchRight:hover {
+.sR:hover {
   transform: translateX(5px);
 }
-.switchLeft {
+.sL {
   left: 0;
   background: linear-gradient(
     270deg,
@@ -222,11 +222,12 @@ body {
   padding: 1em;
   transition: 0.5s ease;
 }
-.switchLeft:hover {
+.sL:hover {
   transform: translateX(-5px);
 }
 .popular__title,
-.search__title {
+.search__title,
+.top__title {
   color: white;
   max-width: 1200px;
   margin: 2em auto 0 auto;
@@ -242,6 +243,9 @@ body {
 .error {
   text-align: center;
   color: white;
+}
+#search {
+  display: none;
 }
 @media (max-width: 1024px) {
   /*====================Head==============*/
