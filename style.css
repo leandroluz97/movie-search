@@ -71,6 +71,7 @@ body {
   bottom: 10%;
   left: 31%;
   font-weight: 400;
+  color: #c7c7c7;
 }
 .head__nav {
   display: flex;
@@ -108,7 +109,9 @@ body {
 }
 
 .main__img {
-  width: 230px;
+  width: 226px;
+  height: 340px;
+  object-fit: fill;
 }
 
 .main__content {
@@ -125,20 +128,22 @@ body {
   line-height: 1.5em;
 }
 .main__title {
-  font-size: 2.5em;
+  font-size: 2em;
   margin-bottom: 0.5em;
   line-height: 1.2em;
+  font-weight: 300;
 }
 .main__overview {
   text-align: justify;
   color: var(--text-color);
   font-weight: 300;
+  font-size: 0.9em;
 }
 
 .main__info p {
   margin: 1em 0;
-  font-weight: 200;
-  font-size: 0.9em;
+  font-weight: 300;
+  font-size: 0.8em;
 }
 .main_favorite {
   background-color: #dd0a0a;
@@ -231,6 +236,7 @@ body {
   color: white;
   max-width: 1200px;
   margin: 2em auto 0 auto;
+  font-weight: 300;
 }
 .search__title {
   margin: 0 auto 0 auto;

@@ -8,6 +8,14 @@ const test = document.querySelector('#test');
 
 //EVENT LISTENER
 
+document.addEventListener('click', function (e) {
+  if (e.target.classList.contains('main_favorite')) {
+    const btn = document.querySelector('.main_favorite');
+
+    console.log('yess');
+  }
+});
+
 //Get popular Movie
 document.addEventListener('DOMContentLoaded', function () {
   movie.getMovies().then((data) => {
@@ -32,24 +40,26 @@ document.addEventListener('DOMContentLoaded', function () {
 //Search movie
 input.addEventListener('keyup', function () {
   const ui = new UI('carouselSearch', 'boxSearch');
+  let search = document.querySelector('#search');
 
   if (input.value !== '') {
-    const search = document.querySelector('#search');
-    search.style.display = 'block';
     movie.getMovies(input.value).then(function (data) {
       if (!data.resSearchMovie.results) {
         ui.clearChosenOne();
         ui.clearSearchMovie();
         ui.error();
       } else {
+        search.style.display = 'block';
         ui.allSearchMovie(data.resSearchMovie, data.resGenres, 'movie');
-
+        //console.log(data.resGenres.genres);
         sliders('carouselSearch', 'movie');
       }
     });
   } else {
+    search.style.display = 'none';
     ui.clearChosenOne();
     ui.clearSearchMovie();
+    ui.error();
   }
 });
 

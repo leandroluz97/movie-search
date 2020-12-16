@@ -4,6 +4,7 @@ class UI {
     this.box = document.querySelector(`#${box}`); //   boxSearch
     this.main = document.querySelector('#main');
     this.bg = document.querySelector('.bg');
+    this.search = document.querySelector('#search');
   }
 
   //Display all movies
@@ -38,27 +39,30 @@ class UI {
 
   //Display chosen one
   chosenOne(movieArr, index, genres) {
-    let numGen;
+    if (movieArr[index] !== undefined) {
+      let numGen;
 
-    //Check the genre id of the movie
-    for (let i = 0; i < genres.length; i++) {
-      if (genres[i].id === movieArr[index].genre_ids[0]) {
-        numGen = genres[i];
-        break;
+      //Check the genre id of the movie
+      for (let i = 0; i < genres.length; i++) {
+        if (genres[i].id === movieArr[index].genre_ids[0]) {
+          numGen = genres[i];
+          break;
+        }
       }
-    }
 
-    this.bg.style.backgroundImage = `url('http://image.tmdb.org/t/p/original/${movieArr[index].poster_path}')`;
-    //display the chosen movie
-    this.main.innerHTML = `
+      this.bg.style.backgroundImage = `url('http://image.tmdb.org/t/p/original/${movieArr[index].poster_path}')`;
+      //display the chosen movie
+      this.main.innerHTML = `
     <div class="main__photo" >
-        <img src="http://image.tmdb.org/t/p/original/${movieArr[index].poster_path}" alt="movie poster" class="main__img" />
+        <img src="http://image.tmdb.org/t/p/original/${
+          movieArr[index].poster_path
+        }" alt="movie poster" class="main__img" />
     </div>
     <div class="main__content">
         <div class="main__header">
           <h2 class="main__title">${movieArr[index].title}</h2>
           <p class="main__overview">
-          ${movieArr[index].overview}
+          ${movieArr[index].overview.substring(0, 370)}
           </p>
         </div>
     <button class="main_favorite">
@@ -71,6 +75,7 @@ class UI {
         <p>Rating: <b>${movieArr[index].vote_average}</b></h5>
     </div>
   </div>`;
+    }
   }
 
   //clear the chosen display
@@ -87,6 +92,7 @@ class UI {
 
   //display the error sms
   error() {
+    console.log('ERRRRROOORRR');
     const error = document.querySelector('#error');
     error.innerHTML = 'Sorry, The Movie Data Base doesnt contain this movie';
     setTimeout(() => {
