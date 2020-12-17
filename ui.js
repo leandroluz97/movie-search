@@ -20,7 +20,7 @@ class UI {
     <i class="fas fa-chevron-left switchLeft${movieClass} sL sliderButton"></i>
 `;
     movies.results.forEach((movie, index) => {
-      this.carousel.innerHTML += ` <img src="http://image.tmdb.org/t/p/original/${movie.poster_path}" class="carousel-img ${movieClass}"/>`;
+      this.carousel.innerHTML += `<a href="#test"> <img src="http://image.tmdb.org/t/p/original/${movie.poster_path}" class="carousel-img ${movieClass}" /></a>`;
     });
     if (movieClass === 'movie') {
       this.chosenOne(movieArr, 0, movieGen);
@@ -53,10 +53,10 @@ class UI {
       this.bg.style.backgroundImage = `url('http://image.tmdb.org/t/p/original/${movieArr[index].poster_path}')`;
       //display the chosen movie
       this.main.innerHTML = `
-    <div class="main__photo" >
+    <div class="main__photo">
         <img src="http://image.tmdb.org/t/p/original/${
           movieArr[index].poster_path
-        }" alt="movie poster" class="main__img" />
+        }" alt="movie poster" class="main__img" id="test"/>
     </div>
     <div class="main__content">
         <div class="main__header">
@@ -92,7 +92,7 @@ class UI {
 
   //display the error sms
   error() {
-    console.log('ERRRRROOORRR');
+    //console.log('ERRRRROOORRR');
     const error = document.querySelector('#error');
     error.innerHTML = 'Sorry, The Movie Data Base doesnt contain this movie';
     setTimeout(() => {

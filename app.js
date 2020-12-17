@@ -44,10 +44,11 @@ input.addEventListener('keyup', function () {
 
   if (input.value !== '') {
     movie.getMovies(input.value).then(function (data) {
-      if (!data.resSearchMovie.results) {
+      if (data.resSearchMovie.results.length === 0) {
         ui.clearChosenOne();
         ui.clearSearchMovie();
         ui.error();
+        search.style.display = 'none';
       } else {
         search.style.display = 'block';
         ui.allSearchMovie(data.resSearchMovie, data.resGenres, 'movie');
@@ -59,7 +60,6 @@ input.addEventListener('keyup', function () {
     search.style.display = 'none';
     ui.clearChosenOne();
     ui.clearSearchMovie();
-    ui.error();
   }
 });
 
