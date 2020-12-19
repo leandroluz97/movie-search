@@ -35,19 +35,48 @@ class UI {
   }
 
   //Display Popular
-  popularMovie(popular) {}
+  favoriteMovie(movies, movieClass) {
+    const genObj = movies;
+
+    let movieGen = genObj;
+
+    this.clearSearchMovie();
+
+    this.box.innerHTML = `
+    <i class="fas fa-chevron-right switchRight${movieClass} sR sliderButton"></i>
+    <i class="fas fa-chevron-left switchLeft${movieClass} sL sliderButton"></i>
+`;
+    movies.forEach((movie, index) => {
+      this.carousel.innerHTML += `<a href="#test"> <img src="http://image.tmdb.org/t/p/original/${movie.poster_path}" class="carousel-img ${movieClass}" /></a>`;
+    });
+    if (movieClass === 'movie') {
+      this.chosenOne(movieArr, 0, movieGen);
+    }
+
+    const allDisplayedMovies = document.querySelectorAll(`.${movieClass}`); //movie
+    allDisplayedMovies.forEach((chosen, index) => {
+      chosen.addEventListener('click', (e) => {
+        this.chosenOne(movies, index, movieGen, movieClass);
+      });
+    });
+  }
 
   //Display chosen one
-  chosenOne(movieArr, index, genres) {
+  chosenOne(movieArr, index, genres, movieClass) {
     if (movieArr[index] !== undefined) {
       let numGen;
 
-      //Check the genre id of the movie
-      for (let i = 0; i < genres.length; i++) {
-        if (genres[i].id === movieArr[index].genre_ids[0]) {
-          numGen = genres[i];
-          break;
+      //chech if the genre if from favorites or search
+      if (movieClass !== 'favorite') {
+        //Check the genre id of the movie
+        for (let i = 0; i < genres.length; i++) {
+          if (genres[i].id === movieArr[index].genre_ids[0]) {
+            numGen = genres[i];
+            break;
+          }
         }
+      } else {
+        numGen = genres[index].genres[0];
       }
 
       this.bg.style.backgroundImage = `url('http://image.tmdb.org/t/p/original/${movieArr[index].poster_path}')`;

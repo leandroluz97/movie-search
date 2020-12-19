@@ -1,5 +1,6 @@
 //instanciate classes
 const movie = new Movies();
+const storage = new Storage();
 
 //ui variables
 const btn = document.querySelector('#btn');
@@ -8,21 +9,59 @@ const test = document.querySelector('#test');
 
 //EVENT LISTENER
 
+//get favorite
+document.addEventListener('DOMContentLoaded', function () {
+  const ui = new UI('carouselFav', 'boxFav');
+
+  //get data from local storaage end then print it on screen
+  movie.getMovies().then((data) => {
+    const savedStorage = storage.getStorage();
+    ui.favoriteMovie(savedStorage, 'favorite');
+  });
+});
+
+//Add favorite
 document.addEventListener('click', function (e) {
   const ui = new UI('carouselFav', 'boxFav');
   const resByIdArr = {
     results: [],
   };
 
+  //if the taarget clicked contains the button fav forite
   if (e.target.classList.contains('main_favorite')) {
     const btnFav = document.querySelector('.main_favorite');
     const idFavMovie = btnFav.getAttribute('data-id');
+    let check;
 
-    console.log(idFavMovie);
     //Get movie by id
     movie.getMovies(idFavMovie).then((data) => {
       resByIdArr.results.push(data.resById);
-      ui.allSearchMovie(resByIdArr, data.resGenres, 'favorite');
+
+      console.log(data.resById);
+      //get local storage
+      const savedStorage = storage.getStorage();
+
+      //if the lS is empty add
+      if (savedStorage.length <= 0) {
+        storage.addStorage(data.resById);
+        check = true;
+      } else {
+        //check if LS has a fav
+        for (let i = 0; i < savedStorage.length; i++) {
+          //if the LS has set check to true
+          if (savedStorage[i].id === data.resById.id) {
+            check = true;
+            break;
+          } else {
+            check = false;
+          }
+        }
+      }
+      //if Ls does have it add to local storage
+      if (!check) {
+        storage.addStorage(data.resById);
+      }
+      ui.favoriteMovie(savedStorage, 'favorite');
     });
   }
 });
@@ -41,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
   movie.getMovies().then((data) => {
-    ui = new UI('carouselTop', 'boxTop');
+    let ui = new UI('carouselTop', 'boxTop');
 
     ui.allSearchMovie(data.resTopRated, data.resGenres, 'top');
     sliders('carouselTop', 'top');

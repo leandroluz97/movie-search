@@ -1,19 +1,19 @@
 class Storage {
   constructor() {
-    this.favorites;
+    this.favorites = [];
   }
 
   getStorage() {
-    if (localStorage.getItem('fav') === null) {
+    if (localStorage.getItem('favorite') === null) {
       this.favorites = [];
     } else {
-      this.favorites = JSON.parse(localStorage.getItem('fav'));
+      this.favorites = JSON.parse(localStorage.getItem('favorite'));
     }
 
     return this.favorites;
   }
   addStorage(movie) {
     this.favorites.push(movie);
-    localStorage.setItem('fav', JSON.stringify(this.favorites));
+    localStorage.setItem('favorite', JSON.stringify(this.favorites));
   }
 }
