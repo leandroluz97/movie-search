@@ -9,10 +9,21 @@ const test = document.querySelector('#test');
 //EVENT LISTENER
 
 document.addEventListener('click', function (e) {
-  if (e.target.classList.contains('main_favorite')) {
-    const btn = document.querySelector('.main_favorite');
+  const ui = new UI('carouselFav', 'boxFav');
+  const resByIdArr = {
+    results: [],
+  };
 
-    console.log('yess');
+  if (e.target.classList.contains('main_favorite')) {
+    const btnFav = document.querySelector('.main_favorite');
+    const idFavMovie = btnFav.getAttribute('data-id');
+
+    console.log(idFavMovie);
+    //Get movie by id
+    movie.getMovies(idFavMovie).then((data) => {
+      resByIdArr.results.push(data.resById);
+      ui.allSearchMovie(resByIdArr, data.resGenres, 'favorite');
+    });
   }
 });
 
@@ -41,9 +52,9 @@ document.addEventListener('DOMContentLoaded', function () {
 input.addEventListener('keyup', function () {
   const ui = new UI('carouselSearch', 'boxSearch');
   let search = document.querySelector('#search');
-
-  if (input.value !== '') {
-    movie.getMovies(input.value).then(function (data) {
+  let inputVal = input.value.replace(/\W/g, '');
+  if (inputVal !== '') {
+    movie.getMovies(inputVal).then(function (data) {
       if (data.resSearchMovie.results.length === 0) {
         ui.clearChosenOne();
         ui.clearSearchMovie();

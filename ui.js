@@ -65,7 +65,7 @@ class UI {
           ${movieArr[index].overview.substring(0, 370)}
           </p>
         </div>
-    <button class="main_favorite">
+    <button class="main_favorite" data-id="${movieArr[index].id}">
         Add Favorite <i class="fas fa-star"></i>
     </button>
     <div class="main__info">
@@ -92,12 +92,13 @@ class UI {
 
   //display the error sms
   error() {
-    //console.log('ERRRRROOORRR');
     const error = document.querySelector('#error');
+    error.classList.add('error__reveal');
     error.innerHTML = 'Sorry, The Movie Data Base doesnt contain this movie';
     setTimeout(() => {
       error.innerHTML = '';
-    }, 2000);
+      error.classList.remove('error__reveal');
+    }, 4000);
   }
 }
 

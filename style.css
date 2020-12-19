@@ -233,7 +233,8 @@ body {
 }
 .popular__title,
 .search__title,
-.top__title {
+.top__title,
+.favorite__title {
   color: white;
   max-width: 1200px;
   margin: 2em auto 0 auto;
@@ -250,6 +251,17 @@ body {
 .error {
   text-align: center;
   color: white;
+  max-width: 1200px;
+  margin: auto;
+  padding: 1vh 1vw;
+  background-color: rgba(255, 0, 0, 0.5);
+  border: solid 2px red;
+  border-radius: 5px;
+  color: rgb(255, 75, 75);
+  display: none;
+}
+.error__reveal {
+  display: block;
 }
 #search {
   display: none;
