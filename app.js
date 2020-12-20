@@ -14,9 +14,20 @@ document.addEventListener('DOMContentLoaded', function () {
   const ui = new UI('carouselFav', 'boxFav');
 
   //get data from local storaage end then print it on screen
-  movie.getMovies().then((data) => {
-    const savedStorage = storage.getStorage();
-    ui.favoriteMovie(savedStorage, 'favorite');
+
+  const savedStorage = storage.getStorage();
+  ui.addFavoriteMovie(savedStorage, 'favorite');
+
+  //delete favorite
+  let carousel = document.querySelector('#carouselFav');
+  carousel.addEventListener('click', function (e) {
+    if (e.target.classList.contains('remove')) {
+      let favs = document.querySelectorAll('.remove');
+      favs.forEach((fav, index) => {
+        storage.deleteStorage(index);
+        ui.removeFavoriteMovie(index);
+      });
+    }
   });
 });
 
@@ -37,7 +48,6 @@ document.addEventListener('click', function (e) {
     movie.getMovies(idFavMovie).then((data) => {
       resByIdArr.results.push(data.resById);
 
-      console.log(data.resById);
       //get local storage
       const savedStorage = storage.getStorage();
 
@@ -61,7 +71,7 @@ document.addEventListener('click', function (e) {
       if (!check) {
         storage.addStorage(data.resById);
       }
-      ui.favoriteMovie(savedStorage, 'favorite');
+      ui.addFavoriteMovie(savedStorage, 'favorite');
     });
   }
 });

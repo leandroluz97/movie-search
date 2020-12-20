@@ -20,7 +20,7 @@ class UI {
     <i class="fas fa-chevron-left switchLeft${movieClass} sL sliderButton"></i>
 `;
     movies.results.forEach((movie, index) => {
-      this.carousel.innerHTML += `<a href="#test"> <img src="http://image.tmdb.org/t/p/original/${movie.poster_path}" class="carousel-img ${movieClass}" /></a>`;
+      this.carousel.innerHTML += `<a href="#chosen" class="carousel__link"> <img src="http://image.tmdb.org/t/p/original/${movie.poster_path}" class="carousel-img ${movieClass}" /></a>`;
     });
     if (movieClass === 'movie') {
       this.chosenOne(movieArr, 0, movieGen);
@@ -35,7 +35,7 @@ class UI {
   }
 
   //Display Popular
-  favoriteMovie(movies, movieClass) {
+  addFavoriteMovie(movies, movieClass) {
     const genObj = movies;
 
     let movieGen = genObj;
@@ -47,7 +47,10 @@ class UI {
     <i class="fas fa-chevron-left switchLeft${movieClass} sL sliderButton"></i>
 `;
     movies.forEach((movie, index) => {
-      this.carousel.innerHTML += `<a href="#test"> <img src="http://image.tmdb.org/t/p/original/${movie.poster_path}" class="carousel-img ${movieClass}" /></a>`;
+      this.carousel.innerHTML += `<a href="#chosen" class="carousel__link fav"> 
+      <img src="http://image.tmdb.org/t/p/original/${movie.poster_path}" class="carousel-img ${movieClass}" />
+      <button class="remove"><i class="fas fa-trash-alt"></i></button>
+      </a>`;
     });
     if (movieClass === 'movie') {
       this.chosenOne(movieArr, 0, movieGen);
@@ -59,6 +62,12 @@ class UI {
         this.chosenOne(movies, index, movieGen, movieClass);
       });
     });
+  }
+
+  //Remove Favorite
+  removeFavoriteMovie(index) {
+    let favs = document.querySelectorAll('.fav');
+    favs[index].remove();
   }
 
   //Display chosen one
@@ -85,7 +94,7 @@ class UI {
     <div class="main__photo">
         <img src="http://image.tmdb.org/t/p/original/${
           movieArr[index].poster_path
-        }" alt="movie poster" class="main__img" id="test"/>
+        }" alt="movie poster" class="main__img" id="chosen"/>
     </div>
     <div class="main__content">
         <div class="main__header">

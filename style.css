@@ -181,13 +181,14 @@ body {
 }
 .carousel-img {
   display: block;
-  height: 180px;
-  width: auto;
+  height: auto;
+  width: 120px;
   margin: 0 0.5em 0 0.5em;
   transition: 0.4s ease;
 }
+
 .carousel-img:hover {
-  transform: scale(1.2);
+  /*transform: scale(1.2);*/
   cursor: pointer;
 }
 .carouselBox {
@@ -265,6 +266,38 @@ body {
 }
 #search {
   display: none;
+}
+#carouselFav a {
+  position: relative;
+}
+.remove {
+  position: absolute;
+  bottom: -100px;
+  width: 120px;
+  margin: 0 0.5em 0 0.5em;
+  border: none;
+  color: white;
+  background-color: red;
+  padding: 0.5em;
+  font-size: 1em;
+  transition: 0.4s ease;
+  z-index: 10;
+}
+.carousel__link {
+  transition: 0.4s ease;
+}
+.carousel__link:hover {
+  transform: scale(1.2);
+}
+.carousel__link:hover .remove {
+  cursor: pointer;
+  bottom: 0;
+}
+.fav {
+  overflow: hidden;
+}
+.remove:hover {
+  background-color: rgb(190, 1, 1);
 }
 @media (max-width: 1024px) {
   /*====================Head==============*/

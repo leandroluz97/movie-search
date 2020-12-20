@@ -16,4 +16,8 @@ class Storage {
     this.favorites.push(movie);
     localStorage.setItem('favorite', JSON.stringify(this.favorites));
   }
+  deleteStorage(index) {
+    this.favorites.splice(index, 1);
+    localStorage.setItem('favorite', JSON.stringify(this.favorites));
+  }
 }
