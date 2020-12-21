@@ -8,27 +8,28 @@ const input = document.querySelector('#input');
 const test = document.querySelector('#test');
 
 //EVENT LISTENER
+//delete favorite
+document.addEventListener('click', (e) => {
+  const ui = new UI('carouselFav', 'boxFav');
 
+  if (e.target.classList.contains('remove')) {
+    const favorites = document.querySelectorAll('.fav');
+
+    for (let i = 0; i < favorites.length; i++) {
+      if (e.target.parentElement === favorites[i]) {
+        storage.deleteStorage(i);
+        ui.removeFavoriteMovie(i);
+      }
+    }
+  }
+});
 //get favorite
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function (e) {
   const ui = new UI('carouselFav', 'boxFav');
 
   //get data from local storaage end then print it on screen
-
   const savedStorage = storage.getStorage();
   ui.addFavoriteMovie(savedStorage, 'favorite');
-
-  //delete favorite
-  let carousel = document.querySelector('#carouselFav');
-  carousel.addEventListener('click', function (e) {
-    if (e.target.classList.contains('remove')) {
-      let favs = document.querySelectorAll('.remove');
-      favs.forEach((fav, index) => {
-        storage.deleteStorage(index);
-        ui.removeFavoriteMovie(index);
-      });
-    }
-  });
 });
 
 //Add favorite
