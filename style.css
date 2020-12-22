@@ -77,6 +77,8 @@ body {
 .head__nav {
   display: flex;
   color: white;
+  width: 40%;
+  justify-content: space-between;
 }
 .head__nav ul {
   margin: 0;
@@ -238,8 +240,9 @@ body {
 .favorite__title {
   color: white;
   max-width: 1200px;
-  margin: 2em auto 0 auto;
+  margin: 1.5em auto 0 auto;
   font-weight: 300;
+  font-size: 1.3em;
 }
 .search__title {
   margin: 0 auto 0 auto;
@@ -293,8 +296,10 @@ body {
   cursor: pointer;
   bottom: 0;
 }
+
 .fav {
   overflow: hidden;
+  min-width: 136px;
 }
 .remove:hover {
   background-color: rgb(190, 1, 1);

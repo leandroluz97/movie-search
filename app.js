@@ -8,6 +8,7 @@ const input = document.querySelector('#input');
 const test = document.querySelector('#test');
 
 //EVENT LISTENER
+
 //delete favorite
 document.addEventListener('click', (e) => {
   const ui = new UI('carouselFav', 'boxFav');
@@ -23,6 +24,7 @@ document.addEventListener('click', (e) => {
     }
   }
 });
+
 //get favorite
 document.addEventListener('DOMContentLoaded', function (e) {
   const ui = new UI('carouselFav', 'boxFav');
@@ -30,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
   //get data from local storaage end then print it on screen
   const savedStorage = storage.getStorage();
   ui.addFavoriteMovie(savedStorage, 'favorite');
+
+  sliders('carouselFav', 'favorite');
 });
 
 //Add favorite
@@ -113,7 +117,7 @@ input.addEventListener('keyup', function () {
       } else {
         search.style.display = 'block';
         ui.allSearchMovie(data.resSearchMovie, data.resGenres, 'movie');
-        //console.log(data.resGenres.genres);
+
         sliders('carouselSearch', 'movie');
       }
     });
@@ -140,56 +144,3 @@ function sliders(carousel, section) {
     scroll.sliderScrollRight(section);
   });
 }
-/*
-
-//instanciate classes
-const movie = new Movies();
-const ui = new UI();
-const scroll = new Scroll();
-
-//ui variables
-const btn = document.querySelector('#btn');
-const input = document.querySelector('#input');
-const test = document.querySelector('#test');
-
-//EVENT LISTENER
-
-//Get popular Movie
-document.addEventListener('DOMContentLoaded', function () {
-  movie.getMovies().then((data) => {
-    //console.log(data.resPopular.results);
-    // ui.allSearchMovie(data.resPopular, data.resGenres);
-  });
-});
-
-//Search movie
-input.addEventListener('keyup', function () {
-  if (input.value !== '') {
-    movie.getMovies(input.value).then(function (data) {
-      if (!data.resSearchMovie.results) {
-        ui.clearChosenOne();
-        ui.clearSearchMovie();
-        ui.error();
-      } else {
-        ui.allSearchMovie(data.resSearchMovie, data.resGenres);
-
-        //Arrow sliders
-        const left = document.querySelector('.switchLeft');
-        const right = document.querySelector('.switchRight');
-
-        left.addEventListener('click', function () {
-          scroll.sliderScrollLeft();
-        });
-
-        right.addEventListener('click', function () {
-          scroll.sliderScrollRight();
-        });
-      }
-    });
-  } else {
-    ui.clearChosenOne();
-    ui.clearSearchMovie();
-  }
-});
-
-*/

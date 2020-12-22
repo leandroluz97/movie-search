@@ -6,7 +6,7 @@ class Scroll {
 
   //Scroll left
   sliderScrollLeft(classMovie) {
-    console.log(classMovie);
+    //check which carousel to scroll
     let scrollPerClick =
       document.querySelector(`.${classMovie}`).clientWidth * 3;
 
@@ -23,9 +23,11 @@ class Scroll {
 
   //Scroll right
   sliderScrollRight(classMovie) {
+    //check which carousel to scroll
     let scrollPerClick =
       document.querySelector(`.${classMovie}`).clientWidth * 3;
 
+    //check if Scroll right is at the end scroll to start point
     if (
       this.scroollAmount <=
       this.carousel.scrollWidth - this.carousel.clientWidth

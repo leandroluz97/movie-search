@@ -4,6 +4,7 @@ class Storage {
   }
 
   getStorage() {
+    //check if LS is empty
     if (localStorage.getItem('favorite') === null) {
       this.favorites = [];
     } else {
