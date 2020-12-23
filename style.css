@@ -98,7 +98,7 @@ body {
   transition: 0.5s ease;
 }
 .head__item a {
-  padding: 1em;
+  padding: 0.5em;
 }
 .head__item a:hover {
   transform: translateY(-3px);
@@ -160,7 +160,7 @@ body {
   align-items: center;
   cursor: pointer;
   outline: none;
-  transition: 0.1s ease;
+  transition: 0.5s ease;
   margin-top: 1em;
 }
 .fa-star {
@@ -168,7 +168,7 @@ body {
   padding-left: 0.5em;
 }
 .main_favorite:hover {
-  transform: scale(1.05);
+  background-color: #ff1f1f;
 }
 
 /*=========Carousel=============*/
@@ -346,6 +346,10 @@ body {
   .head__search {
     order: 3;
   }
+  .head__nav {
+    width: 80%;
+    margin: 5vh 5vh;
+  }
   /*=======Bodyyy========*/
   .main {
     flex-direction: column;
@@ -355,6 +359,12 @@ body {
   }
   .main__photo img {
     margin-bottom: 2vh;
+  }
+  .popular__title,
+  .search__title,
+  .top__title,
+  .favorite__title {
+    text-align: center;
   }
 }
 @media (max-width: 425px) {
@@ -369,6 +379,9 @@ body {
   .head__logo {
     width: 20vw;
     margin: 2vh 0;
+  }
+  .head__nav {
+    width: 100%;
   }
   .head__search {
     position: relative;
@@ -388,14 +401,22 @@ body {
     left: 4%;
   }
   .head__item a {
-    padding: 1em;
-    font-size: 1.5em;
-    margin-bottom: 5vh;
+    padding: 0.5em;
+    font-size: 1.2em;
+    margin-bottom: 2vh;
+    margin-top: 0vh;
+    text-align: center;
+  }
+  .popular__title,
+  .search__title,
+  .top__title,
+  .favorite__title {
+    text-align: center;
   }
 
   /*=======bodyyy========*/
   .main__photo img {
-    width: 100%;
+    width: auto;
   }
   .main__content {
     width: 100%;
