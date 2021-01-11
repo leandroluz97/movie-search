@@ -20,7 +20,7 @@ body {
     url('img/avengers.jpg');*/
   background-color: var(--bg-color);
   background-size: cover;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 .bg {
   position: absolute;
@@ -61,7 +61,7 @@ body {
 }
 .head__input::placeholder {
   opacity: 0.5;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 0.8em;
 }
 
@@ -93,7 +93,7 @@ body {
 .head__nav a {
   text-decoration: none;
   color: white;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   cursor: pointer;
   transition: 0.5s ease;
 }
